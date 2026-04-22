@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap');
+
+@theme {
+  --font-serif: "EB Garamond", serif;
+  --font-display: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+
+  --color-sepia-dark: #1a1614;
+  --color-sepia-accent: #c5a059;
+  --color-sepia-light: #e2d1b3;
+  --color-sepia-mid: #2c241e;
+
+  --color-historical-red: #8b0000;
+  --color-historical-bronze: #c5a059;
+}
+
+@layer base {
+  body {
+    @apply bg-sepia-dark text-sepia-light font-sans antialiased overflow-x-hidden;
+  }
+
+  h1, h2, h3 {
+    @apply font-display text-white;
+  }
+}
+
+.text-shadow-bold {
+  text-shadow: 4px 4px 0px var(--color-sepia-accent);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.text-reveal {
+  @apply overflow-hidden inline-block;
+}
+
+.paper-sheet {
+  background: radial-gradient(circle at top right, #fdfbf7 0%, #e2d1b3 100%);
+  box-shadow: 
+    0px 10px 30px rgba(0,0,0,0.5),
+    inset 0 0 100px rgba(197, 160, 89, 0.1);
+}
+
+.paper-sheet::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.parallax-bg {
+  @apply fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
